@@ -10,6 +10,7 @@ class Demo : Engine
 {
     private GameObject player;
     private GameObject text;
+    private bool intersectSwitch = false;
     public Demo() : base(new Vector2(512, 512), "phengine demo", Color.White)
     {
     }
@@ -18,6 +19,7 @@ class Demo : Engine
         Console.WriteLine("Load(): hit");
         
         player = canvas.CreateObject(new Vector2(15,15), new Vector2(10,10));
+        player.name = "Player";
         Sprite sprite = new Sprite
         {
             type = Sprite.spriteType.image,
@@ -26,6 +28,20 @@ class Demo : Engine
         sprite.LoadImage(@"../../../demo_sprite.png");
         player.scale = new Vector2(sprite.image.Width, sprite.image.Height);
         player.Components.Add(sprite);
+
+        GameObject test = canvas.CreateObject(new Vector2(64,64), new Vector2(32,32));
+        Sprite testSprite = new Sprite
+        {
+            type = Sprite.spriteType.primitive,
+            colour = Color.MediumPurple
+        };
+        test.Components.Add(testSprite);
+        test.OnIntersectStart += o =>
+        {
+            intersectSwitch = true;
+            test.Destroy();
+            Console.WriteLine($"{o.name}: {o.uuid} - start");
+        };
 
         text = canvas.CreateObject(new Vector2(1, 1), new Vector2(5, 5));
         TextRenderer textRenderer = new TextRenderer
@@ -44,8 +60,26 @@ class Demo : Engine
     {
         if (obj == Keys.C)
         {
+            if (intersectSwitch == false) return;
             Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
             SetBackgroundColour(randomColor);
+        }
+
+
+        if (obj == Keys.M)
+        {
+            GameObject newObj = canvas.CreateObject(new Vector2(player.position.X, player.position.Y), new Vector2(rnd.Next(32), rnd.Next(32)));
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            Sprite newSprite = new Sprite
+            {
+                type = Sprite.spriteType.primitive,
+                colour = randomColor
+            };
+            newObj.Components.Add(newSprite);
+            newObj.OnIntersectStart += o =>
+            {
+                Console.WriteLine($"{newObj.uuid}: {o.name}");
+            };
         }
         
         if (obj == Keys.A)

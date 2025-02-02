@@ -8,19 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/phengine/engine/components/Sprite.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/planning/PHYSICS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/planning/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/Component.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/components/Component.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/phengine.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phengine/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/Demo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/objects/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/Sprite.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/TextRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/components/TextRenderer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/Vector2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/math/Vector2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/phengine.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/phengine.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine/engine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine/engine/objects/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/objects/GameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planning/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/planning/TODO.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,29 +26,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "wompscode"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wompscode&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/wompscode/phengine.git",
-    "accountId": "53f81142-37bc-4457-a74d-c2ac00c5576f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/wompscode/phengine.git&quot;,
+    &quot;accountId&quot;: &quot;53f81142-37bc-4457-a74d-c2ac00c5576f&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2c8e7ca976f350cba9836d5565dac56b11e0b56656fa786460eb1395857a6fa/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5159b23811b96792d12316dd5148242a372bd596ea9d614d53abeda41057f4/Thread.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a96e3d352c820588c15ddd8373c2183278ff879be09fe7c028e3bb3aabe13/Control.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/notzer0/RiderProjects/phengine/phengine/Demo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/notzer0/RiderProjects/phengine/phengine/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../repos/WTFIsTheBatteryAt/WTFIsTheBatteryAt/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2sU3BlRzGwMekSkLCxzfbxR1EOE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">

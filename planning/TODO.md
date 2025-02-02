@@ -14,8 +14,8 @@
     - [x] Primitive type
   - [x] Text rendering component
 - [ ] Physics
-  - [ ] Collisions
-    - [ ] Collision detection
-      - [ ] Events
+  - [x] Collisions
+    - [x] Collision detection
+      - [x] Events
   - [ ] Gravity
 - [x] deltaTime implementation

@@ -11,7 +11,7 @@ namespace phengine.engine;
 
 static class phengine_Version
 {
-    public static string version = "0.0.2";
+    public static string version = "0.0.3";
 }
 
 public class phengine_Canvas : Form
@@ -82,7 +82,6 @@ public abstract class Engine
         _engineThread = new Thread(EngineUpdate);
         _engineThreadRunning = true;
         _engineThread.Start();
-
         Load();
     }
 
@@ -124,15 +123,52 @@ public abstract class Engine
             internalTimer.Reset();
             Render();
             canvas.BeginInvoke((MethodInvoker)delegate { canvas.Refresh(); });
+            InternalIntersectUpdate();
             Update();
             internalTimer.Start();
             Thread.Sleep(1);
         }
     }
 
-    public bool IsKeyDown(Keys key)
+    protected bool IsKeyDown(Keys key)
     {
         return lockKeys.Contains(key);
+    }
+
+    List<string> uuidLock = new List<string>();
+    
+    private void InternalIntersectUpdate()
+    {
+        List<GameObject> unmodified = canvas.Hierarchy.ToList();
+        foreach (GameObject gameObject in unmodified)
+        {
+            foreach (GameObject @object in unmodified)
+            {
+                if(gameObject == @object) continue;
+                bool intersects = gameObject.rect.IntersectsWith(@object.rect);
+                string uuidPair = $"{gameObject.uuid}:{@object.uuid}";
+                string uuidPairInverse = $"{@object.uuid}:{gameObject.uuid}";
+                if (intersects)
+                {
+                    if (uuidLock.Contains(uuidPair)) continue;
+                    if (uuidLock.Contains(uuidPairInverse)) continue;
+                    uuidLock.Add(uuidPair);
+                    uuidLock.Add(uuidPairInverse);
+                    gameObject.OnIntersectStart?.Invoke(@object);
+                    @object.OnIntersectStart?.Invoke(gameObject);
+                }
+                else
+                {
+                    if (uuidLock.Contains(uuidPair))
+                    {
+                        gameObject.OnIntersectEnd?.Invoke(@object);
+                        @object.OnIntersectEnd?.Invoke(gameObject);
+                        uuidLock.Remove(uuidPair);
+                        if(uuidLock.Contains(uuidPairInverse)) uuidLock.Remove(uuidPairInverse);
+                    }
+                }
+            }
+        }
     }
     
     private void InternalRender(object? sender, PaintEventArgs e)
@@ -143,6 +179,7 @@ public abstract class Engine
         graphics.Clear(canvas.Background);
         foreach (var gameObject in canvas.Hierarchy)
         {
+            gameObject.Update();
             List<Component> components = gameObject.Components;
             foreach (Component component in components)
             {
