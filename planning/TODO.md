@@ -1,0 +1,21 @@
+﻿- [x] Basic window display
+- [x] Engine loop
+- [x] Keyboard handling
+- [ ] GameObject system
+  - [x] Basic handling of GameObjects
+    - [x] Position
+    - [x] Scale
+  - [x] Components
+  - [ ] Generic event handling between GameObjects
+  - [ ] Tag system
+- [x] Component system
+  - [x] Sprite component
+    - [x] Image loading
+    - [x] Primitive type
+  - [x] Text rendering component
+- [ ] Physics
+  - [ ] Collisions
+    - [ ] Collision detection
+      - [ ] Events
+  - [ ] Gravity
+- [x] deltaTime implementation

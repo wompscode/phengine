@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
-using phengine.engine.math;
+using System.Diagnostics;
+using System.Drawing.Drawing2D;
 using phengine.engine.components;
+using phengine.engine.math;
 using phengine.engine.objects;
 using Component = phengine.engine.components.Component;
 using TextRenderer = phengine.engine.components.TextRenderer;
@@ -9,7 +11,7 @@ namespace phengine.engine;
 
 static class phengine_Version
 {
-    public static string version = "0.0.1";
+    public static string version = "0.0.2";
 }
 
 public class phengine_Canvas : Form
@@ -35,15 +37,22 @@ public class phengine_Canvas : Form
 public abstract class Engine
 {
     static Engine _engineInstance;
-    private bool init;
-    public Vector2 screenSize = new Vector2(512, 512);
-    public string screenTitle = "phengine";
-    public readonly phengine_Canvas canvas;
+    public static Stopwatch _engineTimer = new Stopwatch();
+    public static float deltaTime;
     
-    public Engine(Vector2 screenSize, string screenTitle = "phengine", Color background = default)
+    private bool init;
+    protected Vector2 screenSize = new Vector2(512, 512);
+    protected string screenTitle = "phengine";
+    protected readonly phengine_Canvas canvas;
+    protected InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;
+    protected PixelOffsetMode pixelOffsetMode = PixelOffsetMode.Half;
+    protected Engine(Vector2 screenSize, string screenTitle = "phengine", Color background = default)
     {
         Console.WriteLine($"welcome to phengine v{phengine_Version.version}");
+        _engineTimer.Start();
         _engineInstance = this;
+        Console.WriteLine($"started engine stopwatch, set static engine instance");
+
         this.screenSize = screenSize;
         if (screenTitle == "phengine")
         {
@@ -61,6 +70,10 @@ public abstract class Engine
         canvas.Load += (sender, args) =>
         {
             init = true;
+        };
+        canvas.LostFocus += (sender, args) =>
+        {
+            lockKeys.Clear();
         };
         canvas.KeyDown += InternvalOnKeyDown;
         canvas.KeyUp += InternvalOnKeyUp;
@@ -90,22 +103,29 @@ public abstract class Engine
 
     public void InternalClosing(object? sender, CancelEventArgs e)
     {
-        Console.WriteLine("goodbye phengine!");
         init = false;
         _engineThreadRunning = false;
+        _engineTimer.Stop();
         Closing();
+        Console.WriteLine("goodbye phengine!");
     }
 
     private readonly Thread _engineThread;
     private bool _engineThreadRunning;
+
+    private Stopwatch internalTimer = new Stopwatch();
     private void EngineUpdate()
     {
         while (_engineThreadRunning)
         {
             if (init == false) continue;
+            internalTimer.Stop();
+            deltaTime = (float)internalTimer.Elapsed.TotalSeconds;
+            internalTimer.Reset();
             Render();
             canvas.BeginInvoke((MethodInvoker)delegate { canvas.Refresh(); });
             Update();
+            internalTimer.Start();
             Thread.Sleep(1);
         }
     }
@@ -118,6 +138,8 @@ public abstract class Engine
     private void InternalRender(object? sender, PaintEventArgs e)
     {
         Graphics graphics = e.Graphics;
+        graphics.PixelOffsetMode = pixelOffsetMode;
+        graphics.InterpolationMode = interpolationMode;
         graphics.Clear(canvas.Background);
         foreach (var gameObject in canvas.Hierarchy)
         {
@@ -130,6 +152,10 @@ public abstract class Engine
                 {
                     if (sprite.type == Sprite.spriteType.image)
                     {
+                        if (sprite.image != null)
+                        {
+                            graphics.DrawImage(sprite.image, gameObject.position.X, gameObject.position.Y, gameObject.scale.X, gameObject.scale.Y);
+                        }
                     }
                     else if(sprite.type == Sprite.spriteType.primitive)
                     {

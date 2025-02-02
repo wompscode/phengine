@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using phengine.engine;
+﻿using phengine.engine;
 using phengine.engine.components;
 using phengine.engine.math;
 using phengine.engine.objects;
@@ -9,22 +8,23 @@ namespace phengine;
 
 class Demo : Engine
 {
-    private GameObject player = null;
-    private GameObject text = null;
+    private GameObject player;
+    private GameObject text;
     public Demo() : base(new Vector2(512, 512), "phengine demo", Color.White)
     {
     }
     protected override void Load()
     {
         Console.WriteLine("Load(): hit");
-
         
         player = canvas.CreateObject(new Vector2(15,15), new Vector2(10,10));
         Sprite sprite = new Sprite
         {
-            type = Sprite.spriteType.primitive,
+            type = Sprite.spriteType.image,
             colour = Color.MediumPurple
         };
+        sprite.LoadImage(@"../../../demo_sprite.png");
+        player.scale = new Vector2(sprite.image.Width, sprite.image.Height);
         player.Components.Add(sprite);
 
         text = canvas.CreateObject(new Vector2(1, 1), new Vector2(5, 5));
@@ -47,46 +47,82 @@ class Demo : Engine
             Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
             SetBackgroundColour(randomColor);
         }
+        
+        if (obj == Keys.A)
+        {
+            player.scale.X -= 4;
+        }
+        if (obj == Keys.D)
+        {
+            player.scale.X += 4;
+        }
+        if (obj == Keys.W)
+        {
+            player.scale.Y -= 4;
+        }
+        if (obj == Keys.S)
+        {
+            player.scale.Y += 4;
+        }
+
+        if (obj == Keys.R)
+        {
+            if (player.Components[0] is Sprite sprite)
+            {
+                player.scale = new Vector2(sprite.image.Width, sprite.image.Height);
+            }
+        }
+
+        if (obj == Keys.Escape)
+        {
+            canvas.Close();
+        }
     }
+    private int frame = 0;
 
     protected override void Render()
     {
-        //Console.WriteLine("Render(): hit");
+        frame++;
     }
 
-    private int frame = 0;
-    private Random rnd = new Random();
+    private float fps;
+    private float dt;
+    private int frameC;
+    private Random rnd = new ();
     protected override void Update()
     {
-        frame++;
-
-        bool isLeftDown = IsKeyDown(Keys.Left);
-        bool isRightDown = IsKeyDown(Keys.Right);
-        bool isUpDown = IsKeyDown(Keys.Up);
-        bool isDownDown = IsKeyDown(Keys.Down);
-        if (isLeftDown)
+        frameC++;
+        dt += deltaTime;
+        if (dt > 1.0 / 4f)
+        {
+            fps = (float)Math.Round(frameC / dt);
+            frameC = 0;
+            dt -= 1.0f / 4f;
+        }
+        
+        if (IsKeyDown(Keys.Left))
         {
             player.position.X -= 5;
         }
-        if (isRightDown)
+        if (IsKeyDown(Keys.Right))
         {
             player.position.X += 5;
         }
-        if (isUpDown)
+        if (IsKeyDown(Keys.Up))
         {
             player.position.Y -= 5;
         }
-        if (isDownDown)
+        if (IsKeyDown(Keys.Down))
         {
             player.position.Y += 5;
         }
-        bool outcome = SetTitle($"{screenTitle}: frame {frame}");
+        
+        bool outcome = SetTitle($"{screenTitle}: fps{fps}");
 
         if (text.Components.Count > 0 && text.Components[0] is TextRenderer textRenderer)
         {
-            textRenderer.Text = $"phengine demo: {player.position.X}, {player.position.Y}";
+            textRenderer.Text = $"phengine demo: pos({player.position.X}, {player.position.Y}), sca({player.scale.X}, {player.scale.Y})";
         }
-
     }
 
     protected override void Closing()
