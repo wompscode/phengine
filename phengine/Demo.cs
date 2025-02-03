@@ -38,6 +38,7 @@ class Demo : Engine
         test.Components.Add(testSprite);
         test.OnIntersectStart += o =>
         {
+            MessageBox("test", true);
             intersectSwitch = true;
             test.Destroy();
             Console.WriteLine($"{o.name}: {o.uuid} - start");
@@ -151,7 +152,7 @@ class Demo : Engine
             player.position.Y += 5;
         }
         
-        bool outcome = SetTitle($"{screenTitle}: fps{fps}");
+        bool outcome = SetTitle($"{ScreenTitle}: fps{fps}");
 
         if (text.Components.Count > 0 && text.Components[0] is TextRenderer textRenderer)
         {

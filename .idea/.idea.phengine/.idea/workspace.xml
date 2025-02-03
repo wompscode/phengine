@@ -7,13 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="first commit">
+    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/phengine.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phengine/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/Demo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phengine/engine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/engine/objects/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/objects/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planning/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/planning/TODO.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +40,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5159b23811b96792d12316dd5148242a372bd596ea9d614d53abeda41057f4/Thread.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a96e3d352c820588c15ddd8373c2183278ff879be09fe7c028e3bb3aabe13/Control.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/notzer0/RiderProjects/phengine/phengine/Demo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/notzer0/RiderProjects/phengine/phengine/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../repos/WTFIsTheBatteryAt/WTFIsTheBatteryAt/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -59,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.phengine.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.phengine.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="phengine" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -102,6 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1738496193082</updated>
       <workItem from="1738496194298" duration="13986000" />
+      <workItem from="1738543938285" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -111,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738504920440</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="engine changes: implement uuid and name system for gameobjects. implement intersecting object system, so can detect when objects touch eachother. very basic locking system so this system doesn't just send out a million pulses a second.&#10;&#10;demo: can only press C to change if hit first object. press M to make random coloured object.">
+      <option name="closed" value="true" />
+      <created>1738515457017</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738515457017</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +138,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="engine changes: implement uuid and name system for gameobjects. implement intersecting object system, so can detect when objects touch eachother. very basic locking system so this system doesn't just send out a million pulses a second.&#10;&#10;demo: can only press C to change if hit first object. press M to make random coloured object." />
+    <option name="LAST_COMMIT_MESSAGE" value="engine changes: implement uuid and name system for gameobjects. implement intersecting object system, so can detect when objects touch eachother. very basic locking system so this system doesn't just send out a million pulses a second.&#10;&#10;demo: can only press C to change if hit first object. press M to make random coloured object." />
   </component>
 </project>

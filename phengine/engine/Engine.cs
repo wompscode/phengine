@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 using phengine.engine.components;
 using phengine.engine.math;
 using phengine.engine.objects;
@@ -36,16 +37,16 @@ public class phengine_Canvas : Form
 
 public abstract class Engine
 {
-    static Engine _engineInstance;
-    public static Stopwatch _engineTimer = new Stopwatch();
+    static Engine? _engineInstance;
+    public static Stopwatch _engineTimer = new ();
     public static float deltaTime;
     
-    private bool init;
-    protected Vector2 screenSize = new Vector2(512, 512);
-    protected string screenTitle = "phengine";
+    private bool _init;
+    private Vector2 ScreenSize = new (512, 512);
+    protected string ScreenTitle = "phengine";
     protected readonly phengine_Canvas canvas;
-    protected InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;
-    protected PixelOffsetMode pixelOffsetMode = PixelOffsetMode.Half;
+    private InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;
+    private PixelOffsetMode pixelOffsetMode = PixelOffsetMode.Half;
     protected Engine(Vector2 screenSize, string screenTitle = "phengine", Color background = default)
     {
         Console.WriteLine($"welcome to phengine v{phengine_Version.version}");
@@ -53,23 +54,16 @@ public abstract class Engine
         _engineInstance = this;
         Console.WriteLine($"started engine stopwatch, set static engine instance");
 
-        this.screenSize = screenSize;
-        if (screenTitle == "phengine")
-        {
-            this.screenTitle = $"phengine v{phengine_Version.version}";            
-        }
-        else
-        {
-            this.screenTitle = screenTitle;
-        }
+        this.ScreenSize = screenSize;
+        this.ScreenTitle = screenTitle == "phengine" ? $"phengine v{phengine_Version.version}" : screenTitle;
         
-        canvas = new phengine_Canvas(this, new Size((int)this.screenSize.X, (int)this.screenSize.Y), this.screenTitle);
+        canvas = new phengine_Canvas(this, new Size((int)this.ScreenSize.X, (int)this.ScreenSize.Y), this.ScreenTitle);
         canvas.Background = background;
         canvas.Closing += InternalClosing;
         canvas.Paint += InternalRender;
         canvas.Load += (sender, args) =>
         {
-            init = true;
+            _init = true;
         };
         canvas.LostFocus += (sender, args) =>
         {
@@ -102,7 +96,7 @@ public abstract class Engine
 
     public void InternalClosing(object? sender, CancelEventArgs e)
     {
-        init = false;
+        _init = false;
         _engineThreadRunning = false;
         _engineTimer.Stop();
         Closing();
@@ -117,7 +111,7 @@ public abstract class Engine
     {
         while (_engineThreadRunning)
         {
-            if (init == false) continue;
+            if (_init == false) continue;
             internalTimer.Stop();
             deltaTime = (float)internalTimer.Elapsed.TotalSeconds;
             internalTimer.Reset();
@@ -168,6 +162,21 @@ public abstract class Engine
                     }
                 }
             }
+        }
+    }
+
+    protected void MessageBox(string text, bool newThread = false)
+    {
+        if (newThread)
+        {
+            new Thread(() =>
+            {
+                System.Windows.Forms.MessageBox.Show(text);
+            }).Start();
+        }
+        else
+        {
+            System.Windows.Forms.MessageBox.Show(text);
         }
     }
     
