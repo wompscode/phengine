@@ -7,9 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/planning/RENDERING.md" afterDir="false" />
+    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="Discussion document">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine/engine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,8 @@
       <updated>1738496193082</updated>
       <workItem from="1738496194298" duration="13986000" />
       <workItem from="1738543938285" duration="2517000" />
-      <workItem from="1738579859658" duration="712000" />
+      <workItem from="1738579859658" duration="1411000" />
+      <workItem from="1738727359291" duration="116000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -124,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738544524537</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Discussion document">
+      <option name="closed" value="true" />
+      <created>1738580671029</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738580671029</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +157,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="engine changes: implement uuid and name system for gameobjects. implement intersecting object system, so can detect when objects touch eachother. very basic locking system so this system doesn't just send out a million pulses a second.&#10;&#10;demo: can only press C to change if hit first object. press M to make random coloured object." />
     <MESSAGE value="engine change: basic messagebox function" />
-    <option name="LAST_COMMIT_MESSAGE" value="engine change: basic messagebox function" />
+    <MESSAGE value="Discussion document" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discussion document" />
   </component>
 </project>

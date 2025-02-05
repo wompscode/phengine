@@ -115,7 +115,6 @@ public abstract class Engine
             internalTimer.Stop();
             deltaTime = (float)internalTimer.Elapsed.TotalSeconds;
             internalTimer.Reset();
-            Render();
             canvas.BeginInvoke((MethodInvoker)delegate { canvas.Refresh(); });
             InternalIntersectUpdate();
             Update();
@@ -129,7 +128,7 @@ public abstract class Engine
         return lockKeys.Contains(key);
     }
 
-    List<string> uuidLock = new List<string>();
+    List<string> uuidLock = new ();
     
     private void InternalIntersectUpdate()
     {
@@ -212,8 +211,8 @@ public abstract class Engine
                     graphics.DrawString(text.Text, text.Font, new SolidBrush(text.Color), gameObject.position.X, gameObject.position.Y);
                 }
             }
-
         }
+        Render();
     }
 
     public bool SetBackgroundColour(Color colour)
