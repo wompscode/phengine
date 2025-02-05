@@ -137,19 +137,19 @@ class Demo : Engine
         
         if (IsKeyDown(Keys.Left))
         {
-            player.position.X -= 5;
+            player.position.X -= 15 * deltaTime;
         }
         if (IsKeyDown(Keys.Right))
         {
-            player.position.X += 5;
+            player.position.X += 15* deltaTime;
         }
         if (IsKeyDown(Keys.Up))
         {
-            player.position.Y -= 5;
+            player.position.Y -= 15* deltaTime;
         }
         if (IsKeyDown(Keys.Down))
         {
-            player.position.Y += 5;
+            player.position.Y += 15 * deltaTime;
         }
         
         bool outcome = SetTitle($"{ScreenTitle}: fps{fps}");

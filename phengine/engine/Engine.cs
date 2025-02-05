@@ -8,6 +8,10 @@ using phengine.engine.objects;
 using Component = phengine.engine.components.Component;
 using TextRenderer = phengine.engine.components.TextRenderer;
 
+using Veldrid;
+using Veldrid.Sdl2;
+using Veldrid.StartupUtilities;
+
 namespace phengine.engine;
 
 static class phengine_Version
@@ -45,6 +49,11 @@ public abstract class Engine
     private Vector2 ScreenSize = new (512, 512);
     protected string ScreenTitle = "phengine";
     protected readonly phengine_Canvas canvas;
+
+    private Sdl2Window window;
+    private readonly GraphicsDevice _graphicsDevice;
+
+    
     private InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;
     private PixelOffsetMode pixelOffsetMode = PixelOffsetMode.Half;
     protected Engine(Vector2 screenSize, string screenTitle = "phengine", Color background = default)
@@ -56,6 +65,23 @@ public abstract class Engine
 
         this.ScreenSize = screenSize;
         this.ScreenTitle = screenTitle == "phengine" ? $"phengine v{phengine_Version.version}" : screenTitle;
+        WindowCreateInfo wCI = new()
+        {
+            X = 100,
+            Y = 100,
+            WindowHeight = (int)this.ScreenSize.X,
+            WindowWidth = (int)this.ScreenSize.Y,
+            WindowTitle = this.ScreenTitle
+        };
+
+        window = VeldridStartup.CreateWindow(wCI);
+        GraphicsDeviceOptions options = new GraphicsDeviceOptions
+        {
+            PreferStandardClipSpaceYDirection = true,
+            PreferDepthRangeZeroToOne = true
+        };
+        _graphicsDevice = VeldridStartup.CreateGraphicsDevice(window, options);
+        
         
         canvas = new phengine_Canvas(this, new Size((int)this.ScreenSize.X, (int)this.ScreenSize.Y), this.ScreenTitle);
         canvas.Background = background;
@@ -76,7 +102,20 @@ public abstract class Engine
         _engineThread = new Thread(EngineUpdate);
         _engineThreadRunning = true;
         _engineThread.Start();
+
+        _renderThread = new Thread(InternalRenderThread);
+        _renderThreadRunning = true;
+        _renderThread.Start();
+        
         Load();
+    }
+
+    private void InternalRenderThread()
+    {
+        while (window.Exists)
+        {
+            window.PumpEvents();
+        }
     }
 
     private readonly List<Keys> lockKeys = new List<Keys>();
@@ -106,6 +145,9 @@ public abstract class Engine
     private readonly Thread _engineThread;
     private bool _engineThreadRunning;
 
+    private readonly Thread _renderThread;
+    private bool _renderThreadRunning;
+    
     private Stopwatch internalTimer = new Stopwatch();
     private void EngineUpdate()
     {

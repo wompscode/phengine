@@ -7,9 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="Discussion document">
+    <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="Engine: move post-refresh Render() call to the refresh class instead of before canvas is refreshed.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/Demo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phengine/engine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phengine/phengine.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/phengine.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +22,11 @@
     <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -54,20 +61,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.phengine.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.phengine.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "veldrid",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="phengine" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -99,7 +106,7 @@
       <workItem from="1738496194298" duration="13986000" />
       <workItem from="1738543938285" duration="2517000" />
       <workItem from="1738579859658" duration="1411000" />
-      <workItem from="1738727359291" duration="116000" />
+      <workItem from="1738727359291" duration="524000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -133,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738580671029</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Engine: move post-refresh Render() call to the refresh class instead of before canvas is refreshed.">
+      <option name="closed" value="true" />
+      <created>1738727533536</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738727533536</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +173,7 @@
     <MESSAGE value="engine changes: implement uuid and name system for gameobjects. implement intersecting object system, so can detect when objects touch eachother. very basic locking system so this system doesn't just send out a million pulses a second.&#10;&#10;demo: can only press C to change if hit first object. press M to make random coloured object." />
     <MESSAGE value="engine change: basic messagebox function" />
     <MESSAGE value="Discussion document" />
-    <option name="LAST_COMMIT_MESSAGE" value="Discussion document" />
+    <MESSAGE value="Engine: move post-refresh Render() call to the refresh class instead of before canvas is refreshed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Engine: move post-refresh Render() call to the refresh class instead of before canvas is refreshed." />
   </component>
 </project>
