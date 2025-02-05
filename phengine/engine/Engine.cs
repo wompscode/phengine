@@ -115,6 +115,7 @@ public abstract class Engine
         while (window.Exists)
         {
             window.PumpEvents();
+            Render();
         }
     }
 
@@ -137,7 +138,11 @@ public abstract class Engine
     {
         _init = false;
         _engineThreadRunning = false;
+        _renderThreadRunning = false;
         _engineTimer.Stop();
+        
+        _graphicsDevice.Dispose();
+        window.Close();
         Closing();
         Console.WriteLine("goodbye phengine!");
     }

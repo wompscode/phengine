@@ -117,7 +117,6 @@ class Demo : Engine
 
     protected override void Render()
     {
-        frame++;
     }
 
     private float fps;
@@ -126,6 +125,8 @@ class Demo : Engine
     private Random rnd = new ();
     protected override void Update()
     {
+        frame++;
+
         frameC++;
         dt += deltaTime;
         if (dt > 1.0 / 4f)
@@ -137,19 +138,19 @@ class Demo : Engine
         
         if (IsKeyDown(Keys.Left))
         {
-            player.position.X -= 15 * deltaTime;
+            player.position.X -= 5;
         }
         if (IsKeyDown(Keys.Right))
         {
-            player.position.X += 15* deltaTime;
+            player.position.X += 5;
         }
         if (IsKeyDown(Keys.Up))
         {
-            player.position.Y -= 15* deltaTime;
+            player.position.Y -= 5;
         }
         if (IsKeyDown(Keys.Down))
         {
-            player.position.Y += 15 * deltaTime;
+            player.position.Y += 5;
         }
         
         bool outcome = SetTitle($"{ScreenTitle}: fps{fps}");

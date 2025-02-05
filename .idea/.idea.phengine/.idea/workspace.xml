@@ -10,8 +10,6 @@
     <list default="true" id="5d47b020-4aee-47bc-958b-331af460f34e" name="Changes" comment="Engine: move post-refresh Render() call to the refresh class instead of before canvas is refreshed.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phengine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phengine/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/Demo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/engine/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/engine/Engine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phengine/phengine.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/phengine/phengine.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.phengine.executor": "Debug",
+    ".NET Project.phengine.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "veldrid",
     "node.js.detected.package.eslint": "true",
