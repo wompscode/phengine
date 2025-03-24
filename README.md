@@ -1,4 +1,6 @@
-﻿## phengine  
+project is not dead im just busy and i love starting projects i dont finish
+ 
+## phengine  
 the world's worst 2D C#-based game engine (can you really call it that?)  
   
 probably'll get worked on when i get bored lol  
